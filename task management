@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Task Manager</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #86c610;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        main {
+            margin: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>DESIGN OF TASK MANAGER</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>CREATE TASK</h2>
+            <form>
+                <label for="taskName">TASK NAME:</label>
+                <input type="text" id="taskName" name="taskName" required>
+
+                <label for="category">CATEGORY:</label>
+                <input type="text" id="category" name="category">
+
+                <label for="deadline">DEADLINE:</label>
+                <input type="date" id="deadline" name="deadline">
+
+                <label for="priority">PRIORITY:</label>
+                <select id="priority" name="priority">
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+
+                <label for="label">Label:</label>
+                <input type="text" id="label" name="label">
+
+                <button type="button" onclick="addTask()">Add Task</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Task List</h2>
+            <ul id="taskList"></ul>
+        </section>
+    </main>
+
+    <script>
+        function addTask() {
+            const taskName = document.getElementById('taskName').value;
+            const category = document.getElementById('category').value;
+            const deadline = document.getElementById('deadline').value;
+            const priority = document.getElementById('priority').value;
+            const label = document.getElementById('label').value;
+
+            const taskList = document.getElementById('taskList');
+            const taskItem = document.createElement('li');
+            taskItem.innerHTML = `
+                <strong>${taskName}</strong><br>
+                Category: ${category}<br>
+                Deadline: ${deadline}<br>
+                Priority: ${priority}<br>
+                Label: ${label}<br>
+            `;
+            taskList.appendChild(taskItem);
+
+            // Clear the form
+            document.querySelector('form').reset();
+        }
+    </script>
+
+</body>
+</html>
